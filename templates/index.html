@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оренда Обладнання Онлайн</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="logo">
+            <h1>Оренда Обладнання Онлайн</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">Про Нас</a></li>
+                <li><a href="#features">Можливості</a></li>
+                <li><a href="#contact">Контакти</a></li>
+                <li><a href="{% url 'login' %}">Вхід</a></li>
+                <li><a href="{% url 'register' %}">Реєстрація</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section id="hero">
+        <div class="container">
+            <h2>Ласкаво просимо на платформу оренди обладнання</h2>
+            <p>Знаходьте, орендуйте та оцінюйте обладнання з легкістю</p>
+            <a href="{% url 'register' %}" class="btn">Зареєструватися</a>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Можливості нашої платформи</h2>
+            <div class="feature">
+                <h3>Реєстрація користувачів</h3>
+                <p>Зареєструйтеся та оберіть зручний спосіб отримання та передачі обладнання.</p>
+            </div>
+            <div class="feature">
+                <h3>Пошук пропозицій</h3>
+                <p>Знаходьте цікаві пропозиції швидко та легко за допомогою наших фільтрів.</p>
+            </div>
+            <div class="feature">
+                <h3>Поповнення віртуального рахунку</h3>
+                <p>Поповнюйте свій віртуальний рахунок безпечно та зручно.</p>
+            </div>
+            <div class="feature">
+                <h3>Комунікація між користувачами</h3>
+                <p>Спілкуйтеся та обмінюйтеся контактною інформацією з іншими користувачами.</p>
+            </div>
+            <div class="feature">
+                <h3>Система оцінювання</h3>
+                <p>Оцінюйте користувачів та орендоване обладнання, підтримуючи високі стандарти якості.</p>
+            </div>
+            <div class="feature">
+                <h3>Розміщення та покупка пропозицій</h3>
+                <p>Розміщуйте свої пропозиції оренди та купуйте пропозиції інших користувачів.</p>
+            </div>
+            <div class="feature">
+                <h3>Керування аккаунтами користувачів</h3>
+                <p>Наша служба підтримки допоможе вам з будь-якими питаннями щодо акаунтів.</p>
+            </div>
+            <div class="feature">
+                <h3>Підтримка клієнтів</h3>
+                <p>Отримуйте відповіді на ваші запитання та високий рівень обслуговування.</p>
+            </div>
+            <div class="feature">
+                <h3>Рекламні можливості</h3>
+                <p>Розміщуйте свої оголошення на нашій платформі та розширюйте свої можливості монетизації.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Про Нас</h2>
+            <p>Ми – платформа, що дозволяє користувачам орендувати обладнання швидко та безпечно. Наша мета – забезпечити найкращий досвід оренди завдяки зручному інтерфейсу, високим стандартам обслуговування та широким можливостям для всіх користувачів.</p>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Контакти</h2>
+            <p>Зв'яжіться з нами за допомогою форми нижче або надішліть нам електронного листа на support@example.com.</p>
+            <form action="contact_form_handler.php" method="post">
+                <label for="name">Ім'я:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Повідомлення:</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <button type="submit">Надіслати</button>
+            </form>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2024 Оренда Обладнання Онлайн. Всі права захищені.</p>
+    </div>
+</footer>
+</body>
+</html>
