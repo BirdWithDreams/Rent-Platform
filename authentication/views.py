@@ -9,7 +9,7 @@ from .forms import CreateUserForm
 # Create your views here.
 def register_page(request):
     if request.user.is_authenticated:
-        return redirect('search')
+        return redirect('index')
 
     form = CreateUserForm()
     if request.method == 'POST':
@@ -19,7 +19,7 @@ def register_page(request):
             user = form.cleaned_data.get('username')
             messages.success(request, 'Account was created for ' + user)
 
-            return redirect('login')
+            return redirect('index')
 
     return render(request, 'register.html', {'form': form})
 

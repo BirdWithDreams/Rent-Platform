@@ -18,9 +18,13 @@
                 <li><a href="#about">Про Нас</a></li>
                 <li><a href="#features">Можливості</a></li>
                 <li><a href="#contact">Контакти</a></li>
-                <li><a href="{% url 'login' %}">Вхід</a></li>
-                <li><a href="{% url 'register' %}">Реєстрація</a></li>
-                <li><a href="{% url 'logout' %}">Вихід</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="">Привіт, {{ request.user }}</a></li>
+                    <li><a href="{% url 'logout' %}">Вихід</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Вхід</a></li>
+                    <li><a href="{% url 'register' %}">Реєстрація</a></li>
+                {% endif %}
             </ul>
         </nav>
     </div>

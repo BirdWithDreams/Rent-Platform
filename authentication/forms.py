@@ -3,7 +3,6 @@ from django import forms
 from .models import CustomUser
 
 
-
 class CreateUserForm(UserCreationForm):
     class Meta:
         model = CustomUser
@@ -12,9 +11,6 @@ class CreateUserForm(UserCreationForm):
             'email',
             'password1',
             'password2',
-
-
-
         ]
 
         # Q9m#Zp5fEe!4BeB
