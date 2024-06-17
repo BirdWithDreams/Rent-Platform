@@ -1,0 +1,80 @@
+/* styles.css */
+
+/* Загальні стилі для сторінки */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+form {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin-bottom: 10px; /* Додаємо відступ знизу */
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #77aaff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    background-color: #5599ee;
+}
+
+.login_btn {
+    background-color: #77aaff;
+}
+
+.login_btn:hover {
+    background-color: #5599ee;
+}
+
+div {
+    text-align: center;
+}
+
+p {
+    color: red;
+    font-size: 14px;
+}
+
+a {
+    color: #77aaff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Стиль для лінку реєстрації */
+.register-link {
+    text-align: center;
+    margin-top: 10px; /* Додаємо відступ зверху */
+}
