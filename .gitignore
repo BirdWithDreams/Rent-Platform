@@ -10,3 +10,4 @@
 /ZeppelinRemoteNotebooks/
 
 .idea
+db.sqlite3
