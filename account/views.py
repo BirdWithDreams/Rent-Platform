@@ -5,9 +5,11 @@ from django.contrib.auth.decorators import login_required
 from .forms import UpdateUserForm
 from authentication.models import CustomUser
 
+#TODO: Change return
+#TODO: Add go back button
 
 # Create your views here.
-
+@login_required(login_url='login')
 def account(request):
     form = UpdateUserForm(instance=request.user)
     if request.method == "POST":
@@ -22,18 +24,3 @@ def account(request):
         return render(request, 'account.html', {'form': form})
 
     return render(request, 'account.html', {'form': form})
-
-# def account(request):
-#
-#
-#     form = UpdateUserForm(instance=request.user)
-#     if request.method == 'POST':
-#         form = UpdateUserForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             user = form.cleaned_data.get('username')
-#             messages.success(request, 'Account was created for ' + user)
-#
-#             return redirect('index')
-#
-#     return render(request, 'register.html', {'form': form})
