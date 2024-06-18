@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "main",
     "offers",
     "account",
+    "search",
 ]
 
 MIDDLEWARE = [

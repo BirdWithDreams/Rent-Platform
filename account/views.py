@@ -5,13 +5,13 @@ from django.contrib.auth.decorators import login_required
 from .forms import UpdateUserForm
 from authentication.models import CustomUser
 
-#TODO: Change return
-#TODO: Add go back button
 
+# TODO: Change returns
+# TODO: Add go back button
+# TODO: Add reset button
 # Create your views here.
 @login_required(login_url='login')
 def account(request):
-    form = UpdateUserForm(instance=request.user)
     if request.method == "POST":
         form = UpdateUserForm(data=request.POST, instance=request.user)
         if form.is_valid():
@@ -22,5 +22,3 @@ def account(request):
         form = UpdateUserForm(instance=request.user)
 
         return render(request, 'account.html', {'form': form})
-
-    return render(request, 'account.html', {'form': form})
