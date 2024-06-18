@@ -5,8 +5,17 @@
     <title>Title</title>
 </head>
 <body>
-<div id="offers">{% for offer in myoffers %}<b>{{ offer.title }}</b>{{ offer.description }}
-    <br>{% endfor %}
+<div id="offers">
+
+    {% for offer in myoffers %}
+        <b>{{ offer.title }}</b>{{ offer.description }}
+        <a href="http://127.0.0.1:8000/offers/edit/{{ offer.id }}/">Редагувати</a>
+        <br>{% endfor %}
+
+
 </div>
+
 </body>
+
+
 </html>
