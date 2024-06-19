@@ -4,7 +4,7 @@ from django.db import models
 
 from authentication.models import CustomUser
 
-
+#TODO: Add contract model
 # Create your models here.
 class Offers(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

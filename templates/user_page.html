@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="user-details">
+    <h1>{{ user.username }}</h1>
+    <p><strong>Ім'я:</strong> {{ user.first_name }}</p>
+    <p><strong>Прізвище:</strong> {{ user.last_name }}</p>
+
+</div>
+{% for review in reviews %}
+    <div class="reviews">
+
+        <b>{{ review.reviewer.username }}</b>{{ review.score }}{{ review.comment }}
+
+    </div>
+{% endfor %}
+
+<a href="http://127.0.0.1:8000/account/comment/{{ user.username }}">Add comment</a>
+
+
+</body>
+</html>

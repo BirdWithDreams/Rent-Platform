@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
-
+# TODO: Add balance field
 # Create your models here.
 class CustomUser(AbstractUser):
     card = models.IntegerField(null=True, blank=True, )

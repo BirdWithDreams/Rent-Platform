@@ -10,6 +10,14 @@
 
 {% include "header.html" %}
 
+<div class="user-details">
+    <h1><a href="http://127.0.0.1:8000/account/{{ user.username }}">{{ user.username }}</a></h1>
+    <p><strong>Ім'я:</strong> {{ user.first_name }}</p>
+    <p><strong>Прізвище:</strong> {{ user.last_name }}</p>
+
+
+</div>
+
 <div class="offer-details">
     <h1>{{ offer.title }}</h1>
     <p><strong>Category:</strong> {{ offer.category }}</p>
@@ -17,10 +25,14 @@
     <p><strong>Description:</strong> {{ offer.description }}</p>
     <p><strong>Tags:</strong> {{ offer.tags }}</p>
     <p><strong>Posted on:</strong> {{ offer.created_at }}</p>
+    <p><strong>Image page:</strong> {{ offer.created_at }}</p>
+
     {% if offer.image %}
         <img src="{{ offer.image.url }}" alt="{{ offer.title }}">
     {% endif %}
 </div>
-
+<div>
+    <a href="http://127.0.0.1:8000/offers/makeoffer/{{ offer.id }}">Buy</a>
+</div>
 </body>
 </html>

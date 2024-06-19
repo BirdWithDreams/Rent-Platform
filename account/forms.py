@@ -1,6 +1,7 @@
 from django import forms
 
 from authentication.models import CustomUser
+from .models import Feedbacks
 
 
 class UpdateUserForm(forms.ModelForm):
@@ -17,3 +18,12 @@ class UpdateUserForm(forms.ModelForm):
         ]
 
         # Q9m#Zp5fEe!4BeB
+
+
+class ReviewCreateForm(forms.ModelForm):
+    class Meta:
+        model = Feedbacks
+        fields = [
+            'score',
+            'comment',
+        ]

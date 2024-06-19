@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="POST" action="">
+    {% csrf_token %}
+    {% for field_name, field in form %}
+        {{ field_name }}
+        {{ field }}
+    {% endfor %}
+
+    {{ form.errors }}
+
+    <input type="submit" name="Create Review" value="Надіслати">
+
+</form>
+
+
+</body>
+</html>

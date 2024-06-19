@@ -5,4 +5,5 @@ from . import views
 
 urlpatterns = [
     path('', views.search, name='search'),
+    path('<uuid:offer>/', views.search_offer, name='search_offer'),
 ]

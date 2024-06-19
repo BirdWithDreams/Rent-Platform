@@ -36,7 +36,8 @@
 {% endfor %}
 {% for offer in offers %}
     <div class="offer">
-        <b>{{ offer.title }}</b>{{ offer.description }}
+        <b><a href="{% url 'search_offer' offer.id %}">{{ offer.title }}</a></b>{{ offer.description }}
+
     </div>
 {% endfor %}
 

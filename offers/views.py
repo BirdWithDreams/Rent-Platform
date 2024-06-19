@@ -42,3 +42,17 @@ def edit_offer(request, offer):
     form = OfferCreateForm(instance=Offers.objects.get(id=offer))
     form = list(zip(FORM_FIELDS, form))
     return render(request, 'offer-add-edit.html', {'form': form, 'title': 'Редагування пропозиції'})
+
+# TODO: fix None in form
+# TODO: Add form handling
+@login_required(login_url='login')
+def make_offer(request, offer):
+    if request.method == 'POST':
+
+
+
+        return redirect('search')
+
+
+    return render(request, 'make_offer.html', {'offer': Offers.objects.get(id=offer), 'user': request.user})
+

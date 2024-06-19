@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ offer.title }}</title>
+    <link rel="stylesheet" href="{% static 'css/search-offer.css' %}">
+</head>
+<body>
+
+{% include "header.html" %}
+
+<div class="offer-details">
+    <h1>{{ offer.title }}</h1>
+    <p><strong>Category:</strong> {{ offer.category }}</p>
+    <p><strong>Price:</strong> ${{ offer.price }}</p>
+    <p><strong>Description:</strong> {{ offer.description }}</p>
+    <p><strong>Tags:</strong> {{ offer.tags }}</p>
+    <p><strong>Posted on:</strong> {{ offer.created_at }}</p>
+    <p><strong>Image page:</strong> {{ offer.created_at }}</p>
+
+    {% if offer.image %}
+        <img src="{{ offer.image.url }}" alt="{{ offer.title }}">
+    {% endif %}
+</div>
+<div>
+    <form action="" method="post">
+        {% csrf_token %}
+
+
+        <input type="text" name="first_name" placeholder="Ім'я" value="{{ user.first_name }}">
+        <input type="text" name="second_name" placeholder="Прізвище" value="{{ user.second_name }}">
+        <input type="text" name="email" placeholder="Електронна пошта" value="{{ user.email }}">
+        <input type="text" name="card" placeholder="Номер карты" value="{{ user.card }}">
+        <input type="text" name="city" placeholder="Місто" value="{{ user.city }}">
+        <input type="text" name="location" placeholder="Адреса" value="{{ user.location }}">
+
+
+        <button type="submit" value="Підтвердити">Підтвердити</button>
+    </form>
+</div>
+{#<div>#}
+{#    <a href="http://127.0.0.1:8000/offers/makeoffer/{{ offer.id }}">Buy</a>#}
+{#</div>#}
+</body>
+</html>
