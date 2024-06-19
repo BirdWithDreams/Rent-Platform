@@ -28,19 +28,15 @@
         {% csrf_token %}
 
 
-        <input type="text" name="first_name" placeholder="Ім'я" value="{{ user.first_name }}">
-        <input type="text" name="second_name" placeholder="Прізвище" value="{{ user.second_name }}">
-        <input type="text" name="email" placeholder="Електронна пошта" value="{{ user.email }}">
-        <input type="text" name="card" placeholder="Номер карты" value="{{ user.card }}">
-        <input type="text" name="city" placeholder="Місто" value="{{ user.city }}">
-        <input type="text" name="location" placeholder="Адреса" value="{{ user.location }}">
+        <input type="text" name="buyer_first_name" placeholder="Ім'я" value="{{ user.first_name }}">
+        <input type="text" name="buyer_last_name" placeholder="Прізвище" value="{{ user.second_name }}">
+        <input type="text" name="buyer_email" placeholder="Електронна пошта" value="{{ user.email }}">
+        <input type="text" name="buyer_city" placeholder="Місто" value="{{ user.city }}">
+        <input type="text" name="buyer_location" placeholder="Адреса" value="{{ user.location }}">
 
 
         <button type="submit" value="Підтвердити">Підтвердити</button>
     </form>
 </div>
-{#<div>#}
-{#    <a href="http://127.0.0.1:8000/offers/makeoffer/{{ offer.id }}">Buy</a>#}
-{#</div>#}
 </body>
 </html>

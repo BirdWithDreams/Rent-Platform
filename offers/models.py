@@ -4,7 +4,9 @@ from django.db import models
 
 from authentication.models import CustomUser
 
-#TODO: Add contract model
+
+
+
 # Create your models here.
 class Offers(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -17,3 +19,15 @@ class Offers(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='offers-images/', blank=True)
 
+
+class Contract(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    seller = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='contract_seller')
+    buyer = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='contract_buyer')
+    offer = models.ForeignKey(Offers, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
+    buyer_first_name = models.CharField(max_length=30)
+    buyer_last_name = models.CharField(max_length=30)
+    buyer_email = models.EmailField()
+    buyer_city = models.CharField(max_length=20)
+    buyer_location = models.CharField(max_length=128)

@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+
+from authentication.models import Wallet
 from .forms import OfferCreateForm
-from .models import Offers
+from .models import Offers, Contract
 from django.contrib import messages
 
 FORM_FIELDS = ["Назва", "Категорія", "Опис", "Ціна", "Теги", "Зображення"]
@@ -43,16 +45,43 @@ def edit_offer(request, offer):
     form = list(zip(FORM_FIELDS, form))
     return render(request, 'offer-add-edit.html', {'form': form, 'title': 'Редагування пропозиції'})
 
+
 # TODO: fix None in form
 # TODO: Add form handling
 @login_required(login_url='login')
 def make_offer(request, offer):
     if request.method == 'POST':
+        offer = Offers.objects.get(id=offer)
+        seller = offer.user_id
+        buyer = request.user
+        seller_wallet = Wallet.objects.get(user_id=seller)
+        buyer_wallet = Wallet.objects.get(user_id=buyer)
+        buyer_first_name = request.POST.get('buyer_first_name')
+        buyer_last_name = request.POST.get('buyer_last_name')
+        buyer_email = request.POST.get('buyer_email')
+        buyer_city = request.POST.get('buyer_city')
+        buyer_location = request.POST.get('buyer_location')
+        balance = Wallet.objects.get(user_id=request.user).balance
 
+        if offer.price > balance:
+            return render(request, 'contract-status.html', {'status': 'Transaction cancelled'})
 
+        contract = Contract.objects.create(
+            seller=seller,
+            buyer=buyer,
+            offer=offer,
+            buyer_first_name=buyer_first_name,
+            buyer_last_name=buyer_last_name,
+            buyer_email=buyer_email,
+            buyer_city=buyer_city,
+            buyer_location=buyer_location,
+        )
 
-        return redirect('search')
+        seller_wallet.balance += offer.price
+        seller_wallet.save()
+        buyer_wallet.balance -= offer.price
+        buyer_wallet.save()
 
+        return render(request, 'contract-status.html', {'status': 'Transaction completed successfully'})
 
     return render(request, 'make_offer.html', {'offer': Offers.objects.get(id=offer), 'user': request.user})
-

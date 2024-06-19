@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Offers
+from .models import Offers, Contract
 
 
 class OfferCreateForm(forms.ModelForm):
@@ -16,5 +16,6 @@ class OfferCreateForm(forms.ModelForm):
             'image',
 
         ]
+
 
 

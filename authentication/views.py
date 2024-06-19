@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 
 from .forms import CreateUserForm
+from .models import Wallet, CustomUser
 
 FORM_FIELDS = ["Логін", "Електронна пошта", "Пароль (має містити хоча б 8 символів та 1 літеру)", "Повторити пароль"]
 
@@ -18,7 +19,11 @@ def register_page(request):
         form = CreateUserForm(request.POST)
 
         if form.is_valid():
-            form.save()
+            user = form.save()
+            wallet = Wallet.objects.create(
+                user_id=user,
+                balance=0
+            )
             user = form.cleaned_data.get('username')
             messages.success(request, 'Account was created for ' + user)
 
