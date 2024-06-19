@@ -7,5 +7,6 @@ urlpatterns = [
     path('', views.index, name='main'),
     path('account/', include('account.urls')),
     path('offers/', include('offers.urls')),
+    path('search/', include('search.urls')),
 
 ]

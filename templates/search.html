@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="text" name="tags" value="Tags">
+    <input type="text" name="category" value="Category">
+    <input type="number" step="0.01" min="0" max="1000000" name="min_price" value="Min price">
+    <input type="number" step="0.01" min="0" max="1000000" name="max_price" value="Max price">
+    <button type="submit">Submit</button>
+</form>
+{% for msg in messages %}
+    <b>{{ msg }}</b><br>
+{% endfor %}
+{% for offer in offers %}
+    <b>{{ offer.title }}</b>{{ offer.description }}<br>
+{% endfor %}
+
+</body>
+</html>
