@@ -7,13 +7,10 @@ from authentication.models import CustomUser
 
 # TODO: Change return
 # TODO: Add go back button
+# TODO: Add reset button
 FORM_FIELDS = ["Ім'я", "Прізвище", "Електронна пошта", "Номер карти", "Адреса", "Місто"]
 
 
-
-# TODO: Change returns
-# TODO: Add go back button
-# TODO: Add reset button
 # Create your views here.
 @login_required(login_url='login')
 def account(request):
@@ -25,12 +22,8 @@ def account(request):
             user = form.save(commit=False)
             user.save()
             form = list(zip(FORM_FIELDS, form))
-            return render(request, 'account.html', {'form': form, 'offers': offers})
+            return render(request, 'account.html', {'form': form})
 
     form = UpdateUserForm(instance=request.user)
     form = list(zip(FORM_FIELDS, form))
-    return render(request, 'account.html', {'form': form, 'offers': offers})
-
-        return render(request, 'account.html', {'form': form})
-
     return render(request, 'account.html', {'form': form})

@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ offer.title }}</title>
+    <link rel="stylesheet" href="{% static 'css/search-offer.css' %}">
+</head>
+<body>
+
+{% include "header.html" %}
+
+<div class="offer-details">
+    <h1>{{ offer.title }}</h1>
+    <p><strong>Category:</strong> {{ offer.category }}</p>
+    <p><strong>Price:</strong> ${{ offer.price }}</p>
+    <p><strong>Description:</strong> {{ offer.description }}</p>
+    <p><strong>Tags:</strong> {{ offer.tags }}</p>
+    <p><strong>Posted on:</strong> {{ offer.created_at }}</p>
+    {% if offer.image %}
+        <img src="{{ offer.image.url }}" alt="{{ offer.title }}">
+    {% endif %}
+</div>
+
+</body>
+</html>

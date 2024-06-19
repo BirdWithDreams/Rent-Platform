@@ -27,7 +27,7 @@ def add_offer(request):
 
             return redirect('account')
     form = list(zip(FORM_FIELDS, form))
-    return render(request, 'offer.html', {'form': form, 'title': 'Створення пропозиції'})
+    return render(request, 'offer-add-edit.html', {'form': form, 'title': 'Створення пропозиції'})
 
 
 @login_required(login_url='login')
@@ -41,4 +41,4 @@ def edit_offer(request, offer):
 
     form = OfferCreateForm(instance=Offers.objects.get(id=offer))
     form = list(zip(FORM_FIELDS, form))
-    return render(request, 'offer.html', {'form': form, 'title': 'Редагування пропозиції'})
+    return render(request, 'offer-add-edit.html', {'form': form, 'title': 'Редагування пропозиції'})

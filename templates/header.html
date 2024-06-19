@@ -3,13 +3,13 @@
     <div class="header-container">
         <div class="logo">
             <h1><a href="{% url 'main' %}">Оренда Обладнання Онлайн</a></h1>
-{#            <a href="{% url 'main' %}">Оренда Обладнання Онлайн</a>#}
         </div>
         <nav>
             <ul>
                 <li><a href="{% url "main" %}#about" class="nav-link">Про Нас</a></li>
                 <li><a href="{% url "main" %}#features" class="nav-link">Можливості</a></li>
                 <li><a href="{% url "main" %}#contact" class="nav-link">Контакти</a></li>
+                <li><a href="{% url "search" %}" class="nav-link">Пошук</a></li>
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'account' %}" class="nav-link">Привіт, {{ request.user }}</a></li>
                     <li><a href="{% url 'user_offers' %}" class="nav-link">Мої пропозиції</a></li>

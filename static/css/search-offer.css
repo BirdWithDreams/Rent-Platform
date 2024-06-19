@@ -1,0 +1,36 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Container for the offer details */
+.offer-details {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the offer image */
+.offer-details img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+/* Style for the headings */
+.offer-details h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Style for the paragraphs */
+.offer-details p {
+    font-size: 16px;
+    margin: 5px 0;
+}

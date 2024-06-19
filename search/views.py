@@ -13,6 +13,13 @@ def search(request):
         min_price = request.POST.get('min_price', None)
         max_price = request.POST.get('max_price', None)
 
+        search_params = {
+            'tags': tags,
+            'category': category,
+            'min_price': min_price,
+            'max_price': max_price,
+        }
+
         messages = []
         filters = Q()
 
@@ -59,7 +66,6 @@ def search(request):
 
             offers = [el for el, count in sorted_offers]
 
-
-        return render(request, 'search.html', {'offers': offers, 'messages': messages})
+        return render(request, 'search.html', {'offers': offers, 'messages': messages, "search_params": search_params})
 
     return render(request, 'search.html', )
