@@ -5,6 +5,8 @@ from django.contrib.auth import authenticate, login, logout
 
 from .forms import CreateUserForm
 
+FORM_FIELDS = ["Логін", "Електронна пошта", "Пароль (має містити хоча б 8 символів та 1 літеру)", "Повторити пароль"]
+
 
 # Create your views here.
 def register_page(request):
@@ -20,8 +22,8 @@ def register_page(request):
             user = form.cleaned_data.get('username')
             messages.success(request, 'Account was created for ' + user)
 
-            return redirect('index')
-
+            return redirect('main')
+    form = list(zip(FORM_FIELDS, form))
     return render(request, 'register.html', {'form': form})
 
 
@@ -37,7 +39,7 @@ def login_page(request):
 
         if user is not None:
             login(request, user)
-            return redirect('index')
+            return redirect('main')
         else:
             messages.info(request, 'Username or password is incorrect')
             return render(request, 'login.html', {})

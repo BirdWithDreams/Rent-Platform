@@ -6,36 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Оренда Обладнання Онлайн</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
 </head>
 <body>
-<header>
-    <div class="container">
-        <div class="logo">
-            <h1>Оренда Обладнання Онлайн</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#about">Про Нас</a></li>
-                <li><a href="#features">Можливості</a></li>
-                <li><a href="#contact">Контакти</a></li>
-                {% if user.is_authenticated %}
-                    <li><a href="{% url 'account' %}">Привіт, {{ request.user }}</a></li>
-                    <li><a href="{% url 'logout' %}">Вихід</a></li>
-                {% else %}
-                    <li><a href="{% url 'login' %}">Вхід</a></li>
-                    <li><a href="{% url 'register' %}">Реєстрація</a></li>
-                {% endif %}
-            </ul>
-        </nav>
-    </div>
-</header>
+
+{% include "header.html" %}
 
 <main>
     <section id="hero">
         <div class="container">
             <h2>Ласкаво просимо на платформу оренди обладнання</h2>
             <p>Знаходьте, орендуйте та оцінюйте обладнання з легкістю</p>
-            <a href="{% url 'register' %}" class="btn">Зареєструватися</a>
+            {% if not user.is_authenticated %}
+                <a href="{% url 'register' %}" class="btn">Зареєструватися</a>
+            {% endif %}
         </div>
     </section>
 

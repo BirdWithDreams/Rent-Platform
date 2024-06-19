@@ -4,28 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="{% static 'css/login_css.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
 <body>
 
 
 <form method="POST" action="">
     {% csrf_token %}
+
     <input type="text" name="username" class="form-control">
-
-
     <input type="password" name="password" class="form-control">
+    <input class="btn login_btn" type="submit" value="Ввійти">
 
-    <div>
-        <input class="btn login_btn" type="submit" value="Login">
-    </div>
     {% for message in messages %}
         <p>{{ message }}</p>
     {% endfor %}
 </form>
 
 <div class="register-link">
-    Don't have an account? <a href="{% url 'register' %}">Sign Up</a>
+    Не маєте акаунту? <a href="{% url 'register' %}">Зареєструватись</a>
 </div>
 
 </body>

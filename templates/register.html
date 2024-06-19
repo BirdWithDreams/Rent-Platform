@@ -1,24 +1,28 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Реєстрація</title>
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
 </head>
 <body>
+
 <form method="POST" action="">
     {% csrf_token %}
-    {% for field in form %}
-        {{ field.label }}
+    {% for field_name, field in form %}
+        {{ field_name }}
         {{ field }}
     {% endfor %}
 
     {{ form.errors }}
 
-    <input type="submit" name="Create User">
+    <input type="submit" name="Create User" value="Зареєструватись">
 
-    <div>
-        Already have an account? <a href="{% url 'login' %}" class="ml-2">Login</a>
-    </div>
 </form>
+<div class="login-section">
+    Вже маєте аккаунт? <a href="{% url 'login' %}" class="login-link">Ввійти</a>
+</div>
+
 </body>
 </html>

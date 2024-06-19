@@ -2,25 +2,28 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
+from offers.models import Offers
 from .forms import UpdateUserForm
 from authentication.models import CustomUser
 
-#TODO: Change return
-#TODO: Add go back button
+# TODO: Change return
+# TODO: Add go back button
+FORM_FIELDS = ["Ім'я", "Прізвище", "Електронна пошта", "Номер карти", "Адреса", "Місто"]
+
 
 # Create your views here.
 @login_required(login_url='login')
 def account(request):
-    form = UpdateUserForm(instance=request.user)
+    offers = Offers.objects.filter(user_id=request.user)
     if request.method == "POST":
         form = UpdateUserForm(data=request.POST, instance=request.user)
+
         if form.is_valid():
             user = form.save(commit=False)
             user.save()
-            return render(request, 'account.html', {'form': form})
-    else:
-        form = UpdateUserForm(instance=request.user)
+            form = list(zip(FORM_FIELDS, form))
+            return render(request, 'account.html', {'form': form, 'offers': offers})
 
-        return render(request, 'account.html', {'form': form})
-
-    return render(request, 'account.html', {'form': form})
+    form = UpdateUserForm(instance=request.user)
+    form = list(zip(FORM_FIELDS, form))
+    return render(request, 'account.html', {'form': form, 'offers': offers})

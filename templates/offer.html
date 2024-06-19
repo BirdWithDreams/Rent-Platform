@@ -3,15 +3,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Аккаунт</title>
-    <link rel="stylesheet" href="{% static 'css/account.css' %}">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static 'css/offer.css' %}">
     <link rel="stylesheet" href="{% static 'css/header.css' %}">
 </head>
 <body>
 
 {% include "header.html" %}
 
-<form method="POST" action="">
+<form method="POST" action="" enctype="multipart/form-data">
     {% csrf_token %}
     {% for field_name, field in form %}
         {{ field_name }}
@@ -20,8 +20,9 @@
 
     {{ form.errors }}
 
-    <input type="submit" name="Create User" value="Зберегти">
+    <input type="submit" name="Create User" value="Змінити">
 
 </form>
+
 </body>
 </html>

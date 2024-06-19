@@ -4,12 +4,15 @@ from .forms import OfferCreateForm
 from .models import Offers
 from django.contrib import messages
 
+FORM_FIELDS = ["Назва", "Категорія", "Опис", "Ціна", "Теги", "Зображення"]
+
 
 # Create your views here.
 @login_required(login_url='login')
 def my_offers(request):
     offers = Offers.objects.filter(user_id=request.user)
-    return render(request, 'myoffers.html', {'myoffers': offers})
+
+    return render(request, 'user_offers.html', {'offers': offers, 'user': request.user})
 
 
 @login_required(login_url='login')
@@ -22,21 +25,20 @@ def add_offer(request):
             form.save()
             messages.success(request, 'Offer was created for ')
 
-            return redirect('my_offers')
-
-    return render(request, 'add_offer.html', {'form': form})
+            return redirect('account')
+    form = list(zip(FORM_FIELDS, form))
+    return render(request, 'offer.html', {'form': form, 'title': 'Створення пропозиції'})
 
 
 @login_required(login_url='login')
 def edit_offer(request, offer):
     if request.method == "POST":
         form = OfferCreateForm(request.POST, request.FILES, instance=Offers.objects.get(id=offer))
-        print(form.is_valid())
         if form.is_valid():
             offer = form.save(commit=False)
             offer.save()
-            return redirect('my_offers')
+            return redirect('account')
 
     form = OfferCreateForm(instance=Offers.objects.get(id=offer))
-    print(Offers.objects.get(id=offer))
-    return render(request, 'edit_offer.html', {'form': form})
+    form = list(zip(FORM_FIELDS, form))
+    return render(request, 'offer.html', {'form': form, 'title': 'Редагування пропозиції'})

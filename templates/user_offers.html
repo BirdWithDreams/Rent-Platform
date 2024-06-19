@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Мої пропозиції</title>
+    <link rel="stylesheet" href="{% static 'css/user_offers.css' %}">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+</head>
+<body>
+
+{% include "header.html" %}
+
+<section class="hero">
+    <div class="hello-container">
+        <h2>Привіт
+            {% if user.first_name %}
+                {{ user.first_name|capfirst }} {{ user.last_name|capfirst }}
+            {% else %}
+                {{ user.username|capfirst }}
+            {% endif %}
+        </h2>
+        <p>Ваші пропозиції аренди</p>
+    </div>
+</section>
+
+<div class="offers">
+    <span class="offer-name">Назва</span>
+    <span class="offer-desc">Опис</span>
+    <span class="offer-edit">Редагування</span>
+</div>
+
+<ul class="offers">
+    {% if offers %}
+        {% for offer in offers %}
+            <li>
+                <b class="offer-title">{{ offer.title }}</b> <span class="offer-description">
+                <span>{{ offer.description }}</span>
+            </span>
+                <a href="{% url 'offer_edit' offer.id %}">Редагувати</a>
+            </li>
+        {% endfor %}
+    {% else %}
+        <p>У вас немає створених пропозицій</p>
+    {% endif %}
+</ul>
+
+<div class="add-offer">
+    <a href="{% url "offer_constructor" %}">Створити пропозицію</a>
+</div>
+
+</body>
+</html>

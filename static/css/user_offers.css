@@ -1,0 +1,114 @@
+/* Герой секція */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+.hero {
+    background: #77aaff;
+    color: #fff;
+    padding: 100px;
+    text-align: center;
+}
+
+.add-offer {
+    max-width: 500px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.add-offer a {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #2196F3;
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: 1px solid #2196F3;
+}
+
+.add-offer a:hover {
+    text-decoration: none;
+    color: #145d93;
+    border: 1px solid #145d93;
+}
+
+.offers {
+    list-style-type: none;
+    max-width: 500px;
+    margin: 20px auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+div.offers {
+    display: flex;
+    justify-content: space-around;
+}
+
+.offer-name, .offer-desc, .offer-edit {
+    display: inline-flex;
+    text-align: center;
+    vertical-align: top;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+ul.offers li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+ul.offers li:last-child {
+    border-bottom: none;
+}
+
+ul.offers li .offer-title {
+    display: inline-block;
+    width: 150px;
+    text-align: left;
+    vertical-align: top;
+    font-weight: normal;
+    font-style: normal;
+}
+
+ul.offers li .offer-description {
+    display: inline-block;
+    width: 150px;
+    text-align: left;
+    font-style: italic;
+}
+
+ul.offers li .offer-description span {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+ul.offers li a {
+    display: inline-block;
+    color: #FF5722;
+    text-decoration: none;
+    margin-left: 10px;
+    vertical-align: top;
+}
+
+ul.offers li a:hover {
+    text-decoration: none;
+    color: #4b281d;
+}
+
+ul.offers li a:active {
+    color: #FF5722;
+}
+
+ul.offers p {
+    text-align: center;
+    color: #666;
+}
