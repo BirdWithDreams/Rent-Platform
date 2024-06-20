@@ -14,7 +14,7 @@ FORM_FIELDS = ["Назва", "Категорія", "Опис", "Ціна", "Те
 def my_offers(request):
     offers = Offers.objects.filter(user_id=request.user)
 
-    return render(request, 'user_offers.html', {'offers': offers, 'user': request.user})
+    return render(request, 'user-offers.html', {'offers': offers, 'user': request.user})
 
 
 @login_required(login_url='login')
@@ -64,7 +64,7 @@ def make_offer(request, offer):
         balance = Wallet.objects.get(user_id=request.user).balance
 
         if offer.price > balance:
-            return render(request, 'contract-status.html', {'status': 'Transaction cancelled'})
+            return render(request, 'transaction-status.html', {'status': 0})
 
         contract = Contract.objects.create(
             seller=seller,
@@ -82,6 +82,6 @@ def make_offer(request, offer):
         buyer_wallet.balance -= offer.price
         buyer_wallet.save()
 
-        return render(request, 'contract-status.html', {'status': 'Transaction completed successfully'})
+        return render(request, 'transaction-status.html', {'status': 1})
 
-    return render(request, 'make_offer.html', {'offer': Offers.objects.get(id=offer), 'user': request.user})
+    return render(request, 'make-offer.html', {'offer': Offers.objects.get(id=offer), 'seller': request.user})

@@ -1,0 +1,48 @@
+{%  load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ target.username }}'s Reviews</title>
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/user-reviews.css' %}">
+</head>
+<body>
+
+{% include "header.html" %}
+
+<main>
+    <div class="user-details">
+        <h1>{{ target.username }}</h1>
+        <p><strong>Ім'я:</strong> {{ target.first_name|capfirst }}</p>
+        <p><strong>Прізвище:</strong> {{ target.last_name|capfirst }}</p>
+        <p><strong>Місто:</strong> {{ target.city }}</p>
+        <p><strong>Адреса:</strong> {{ target.location }}</p>
+        <p><strong>Електронна пошта:</strong> {{ target.email }}</p>
+    </div>
+
+    <div class="reviews-section">
+        <h2>Reviews</h2>
+        {% if reviews %}
+            {% for review in reviews %}
+                <div class="review">
+                    <div class="review-header">
+                        <span class="reviewer">{{ review.reviewer.username }}</span>
+                        <span class="score">Score: {{ review.score }}</span>
+                    </div>
+                    <p class="comment">{{ review.comment }}</p>
+                    <span class="date">{{ review.created_at }}</span>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No reviews yet.</p>
+        {% endif %}
+    </div>
+
+    <div class="add-comment">
+        <a href="http://127.0.0.1:8000/account/comment/{{ target.username }}" class="button">Add comment</a>
+    </div>
+</main>
+
+</body>
+</html>

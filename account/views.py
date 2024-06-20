@@ -8,6 +8,7 @@ from .models import Feedbacks
 
 # TODO: Add go back button
 USER_FORM_FIELDS = ["Ім'я", "Прізвище", "Електронна пошта", "Номер карти", "Адреса", "Місто"]
+REVIEW_FORM_FIELDS = ['Оцінка', 'Коментар']
 
 
 # TODO: Add messages
@@ -31,10 +32,7 @@ def account(request):
 def user(request, username):
     target = CustomUser.objects.get(username=username)
     reviews = Feedbacks.objects.filter(target=target)
-    return render(request, 'user_page.html', {'target': target, 'reviews': reviews})
-
-
-REVIEW_FORM_FIELDS = ['Оцінка', 'Коментарь']
+    return render(request, 'user-reviews.html', {'target': target, 'reviews': reviews})
 
 
 @login_required(login_url='login')
@@ -50,7 +48,7 @@ def add_review(request, username):
         if form.is_valid():
             form.save()
 
-            return render(request, 'user_page.html',
+            return render(request, 'user-reviews.html',
                           {'target': target, 'reviews': reviews})
 
     form = list(zip(REVIEW_FORM_FIELDS, form))

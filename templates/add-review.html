@@ -1,23 +1,36 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Додати відгук</title>
+    <link rel="stylesheet" href="{% static 'css/add-review.css' %}">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
 </head>
 <body>
-<form method="POST" action="">
-    {% csrf_token %}
-    {% for field_name, field in form %}
-        {{ field_name }}
-        {{ field }}
-    {% endfor %}
 
-    {{ form.errors }}
+{% include "header.html" %}
 
-    <input type="submit" name="Create Review" value="Надіслати">
+<div class="form-container">
+    <h1>Додати відгук</h1>
+    <form method="POST" action="">
+        {% csrf_token %}
+        {% for field_name, field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}">{{ field_name }}</label>
+                {{ field }}
+            </div>
+        {% endfor %}
 
-</form>
+        <div class="form-errors">
+            {{ form.errors }}
+        </div>
 
+        <div class="form-group">
+            <input type="submit" name="Create Review" value="Надіслати">
+        </div>
+    </form>
+</div>
 
 </body>
 </html>

@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Статус транзакції</title>
+    <link rel="stylesheet" href="{% static 'css/transaction-status.css' %}">
+</head>
+<body>
+
+<section class="transaction-status">
+    <div class="status-message">
+        {% if status %}
+            <h1 class="success">Операцію успішно виконано</h1>
+        {% else %}
+            <h1 class="error">Операцію відхилено</h1>
+            <p>Недостатньо коштів на рахунку.</p>
+        {% endif %}
+    </div>
+    <div class="continue-shopping">
+        <a href="{% url "search" %}" class="button">Продовжити покупки</a>
+    </div>
+</section>
+
+</body>
+</html>
