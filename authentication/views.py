@@ -25,7 +25,6 @@ def register_page(request):
                 balance=0
             )
             user = form.cleaned_data.get('username')
-            messages.success(request, 'Account was created for ' + user)
 
             return redirect('main')
     form = list(zip(FORM_FIELDS, form))
@@ -46,7 +45,6 @@ def login_page(request):
             login(request, user)
             return redirect('main')
         else:
-            messages.info(request, 'Username or password is incorrect')
             return render(request, 'login.html', {})
 
     return render(request, 'login.html', {})

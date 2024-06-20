@@ -25,11 +25,18 @@ def add_offer(request):
         if form.is_valid():
             form.instance.user_id = request.user
             form.save()
-            messages.success(request, 'Offer was created for ')
 
             return redirect('account')
     form = list(zip(FORM_FIELDS, form))
-    return render(request, 'offer-add-edit.html', {'form': form, 'title': 'Створення пропозиції'})
+    return render(
+        request,
+        'offer-add-edit.html',
+        {
+            'form': form,
+            'title': 'Створення пропозиції',
+            'btn': 'Змінити'
+        }
+    )
 
 
 @login_required(login_url='login')
@@ -43,7 +50,15 @@ def edit_offer(request, offer):
 
     form = OfferCreateForm(instance=Offers.objects.get(id=offer))
     form = list(zip(FORM_FIELDS, form))
-    return render(request, 'offer-add-edit.html', {'form': form, 'title': 'Редагування пропозиції'})
+    return render(
+        request,
+        'offer-add-edit.html',
+        {
+            'form': form,
+            'title': 'Редагування пропозиції',
+            'btn': 'Змінити'
+        }
+    )
 
 
 # TODO: fix None in form
@@ -84,4 +99,12 @@ def make_offer(request, offer):
 
         return render(request, 'transaction-status.html', {'status': 1})
 
-    return render(request, 'make-offer.html', {'offer': Offers.objects.get(id=offer), 'seller': request.user})
+    return render(
+        request,
+        'make-offer.html',
+        {
+            'offer': Offers.objects.get(id=offer),
+            'seller': request.user,
+            'btn': 'Створити'
+        }
+    )
