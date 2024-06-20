@@ -43,7 +43,11 @@
             <p>{{ offer.description }}</p>
         </div>
         <div class="offer-details">
-            <img src="{{ offer.image.url }}">
+            {% if offer.image %}
+                <img src="{{ offer.image.url }}">
+            {% else %}
+                <img src="{% url "main" %}media/offers-images/no-image.png">
+            {% endif %}
             <div class="offer-date">
                 {{ offer.created_at }}
             </div>
