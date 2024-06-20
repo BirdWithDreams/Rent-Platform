@@ -6,31 +6,108 @@ body {
     padding: 20px;
 }
 
-/* Container for the offer details */
-.offer-details {
-    max-width: 600px;
-    margin: 20px auto;
+.offer {
+    max-width: 800px;
+    margin: 10px auto;
     padding: 20px;
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
 }
 
-/* Style for the offer image */
+.offer-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.offer-titles {
+    display: flex;
+    flex-direction: column;
+}
+
+.offer-title-cat {
+    display: flex;
+    align-items: flex-end;
+}
+
+.offer-title {
+    font-weight: bold;
+    font-size: 1.5em;
+    color: #145d93;
+}
+
+.offer-category {
+    font-size: 1em;
+    color: #5e97ff;
+    margin-left: 10px;
+}
+
+.offer-tags {
+    font-size: 0.9em;
+    color: #5e97ff;
+}
+
+.seller-name a,
+.seller-name a:hover,
+.seller-name a:active {
+    text-decoration: none;
+    color: #5e97ff;
+}
+
+.offer-body {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.offer-desc {
+    flex: 2;
+    margin-right: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.offer-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .offer-details img {
     max-width: 100%;
     height: auto;
-    margin-top: 10px;
-}
-
-/* Style for the headings */
-.offer-details h1 {
-    font-size: 24px;
+    border-radius: 8px;
     margin-bottom: 10px;
 }
 
-/* Style for the paragraphs */
-.offer-details p {
-    font-size: 16px;
-    margin: 5px 0;
+.offer-date,
+.offer-price {
+    font-size: 1em;
+    margin-bottom: 5px;
+}
+
+.buy-btn {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.buy-btn a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.buy-btn a:hover {
+    background-color: #45a049;
 }

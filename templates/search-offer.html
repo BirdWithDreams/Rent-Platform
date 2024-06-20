@@ -5,34 +5,82 @@
     <meta charset="UTF-8">
     <title>{{ offer.title }}</title>
     <link rel="stylesheet" href="{% static 'css/search-offer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
 </head>
 <body>
 
 {% include "header.html" %}
 
-<div class="user-details">
-    <h1><a href="http://127.0.0.1:8000/account/{{ user.username }}">{{ user.username }}</a></h1>
-    <p><strong>Ім'я:</strong> {{ user.first_name }}</p>
-    <p><strong>Прізвище:</strong> {{ user.last_name }}</p>
 
+<section class="offer">
+    <div class="offer-header">
+        <div class="offer-titles">
+            <div class="offer-title-cat">
+                <span class="offer-title">
+                    {{ offer.title }}
+                </span>
+                <span class="offer-category">
+                    {{ offer.category }}
+                </span>
+            </div>
+            <span class="offer-tags">
+                {{ offer.tags }}
+            </span>
+        </div>
+        <div class="seller-details">
+            Продавець: 
+            <span class="seller-name">
+            {% if seller.first_name or seller.last_name %}
+                <a href="http://127.0.0.1:8000/account/{{ seller.username }}"> {{ seller.first_name|capfirst }} {{ seller.last_name|capfirst }}</a>
+            {% else %}
+                <a href="http://127.0.0.1:8000/account/{{ seller.username }}"> {{ seller.username|capfirst }}</a>
+            {% endif %}
+            </span>
+        </div>
+    </div>
+    <div class="offer-body">
+        <div class="offer-desc">
+            <b>Опис</b>
+            <p>{{ offer.description }}</p>
+        </div>
+        <div class="offer-details">
+            <img src="{{ offer.image.url }}">
+            <div class="offer-date">
+                {{ offer.created_at }}
+            </div>
+            <div class="offer-price">
+                Ціна: {{ offer.price }} грн.
+            </div>
+        </div>
+    </div>
+    <div class="buy-btn">
+        <a href="http://127.0.0.1:8000/offers/makeoffer/{{ offer.id }}">Купити</a>
+    </div>
+</section>
 
-</div>
-
-<div class="offer-details">
-    <h1>{{ offer.title }}</h1>
-    <p><strong>Category:</strong> {{ offer.category }}</p>
-    <p><strong>Price:</strong> ${{ offer.price }}</p>
-    <p><strong>Description:</strong> {{ offer.description }}</p>
-    <p><strong>Tags:</strong> {{ offer.tags }}</p>
-    <p><strong>Posted on:</strong> {{ offer.created_at }}</p>
-    <p><strong>Image page:</strong> {{ offer.created_at }}</p>
-
-    {% if offer.image %}
-        <img src="{{ offer.image.url }}" alt="{{ offer.title }}">
-    {% endif %}
-</div>
-<div>
-    <a href="http://127.0.0.1:8000/offers/makeoffer/{{ offer.id }}">Buy</a>
-</div>
+{#<div class="user-details">#}
+{#    <h1><a href="http://127.0.0.1:8000/account/{{ user.username }}">{{ user.username }}</a></h1>#}
+{#    <p><strong>Ім'я:</strong> {{ user.first_name }}</p>#}
+{#    <p><strong>Прізвище:</strong> {{ user.last_name }}</p>#}
+{##}
+{##}
+{#</div>#}
+{##}
+{#<div class="offer-details">#}
+{#    <h1>{{ offer.title }}</h1>#}
+{#    <p><strong>Category:</strong> {{ offer.category }}</p>#}
+{#    <p><strong>Price:</strong> ${{ offer.price }}</p>#}
+{#    <p><strong>Description:</strong> {{ offer.description }}</p>#}
+{#    <p><strong>Tags:</strong> {{ offer.tags }}</p>#}
+{#    <p><strong>Posted on:</strong> {{ offer.created_at }}</p>#}
+{#    <p><strong>Image page:</strong> {{ offer.created_at }}</p>#}
+{##}
+{#    {% if offer.image %}#}
+{#        <img src="{{ offer.image.url }}" alt="{{ offer.title }}">#}
+{#    {% endif %}#}
+{#</div>#}
+{#<div>#}
+{#    #}
+{#</div>#}
 </body>
 </html>

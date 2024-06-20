@@ -36,8 +36,15 @@
 {% endfor %}
 {% for offer in offers %}
     <div class="offer">
-        <b><a href="{% url 'search_offer' offer.id %}">{{ offer.title }}</a></b>{{ offer.description }}
-
+        <div class="offer-content">
+            <div class="offer-title"><a href="{% url 'search_offer' offer.id %}">{{ offer.title|capfirst }}</a></div>
+            <div class="offer-description">{{ offer.description }}</div>
+        </div>
+        {% if offer.image %}
+            <div class="offer-image">
+                <img src="{{ offer.image.url }}" alt="{{ offer.title }}">
+            </div>
+        {% endif %}
     </div>
 {% endfor %}
 

@@ -70,4 +70,4 @@ def search(request):
 
 def search_offer(request, offer):
     offer = Offers.objects.get(id=offer)
-    return render(request, 'search-offer.html', {'offer': offer, 'user': offer.user_id})
+    return render(request, 'search-offer.html', {'offer': offer, 'seller': offer.user_id})

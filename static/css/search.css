@@ -50,18 +50,53 @@ b {
     color: #721c24;
 }
 
-/* Style for the offers list */
 .offer {
-    max-width: 600px;
+    display: flex;
+    max-width: 800px;
     margin: 10px auto;
     padding: 10px;
+    width: 800px;
+    height: 200px;
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.offer b {
-    font-size: 18px;
-    display: block;
-    margin-bottom: 5px;
+.offer-title,
+.offer-description {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.offer-title a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #77aaff;
+}
+
+.offer-title a:hover {
+    color: #145d93;
+}
+
+.offer-title a:active {
+    color: #77aaff;
+}
+
+.offer-content {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding-right: 10px;
+    box-sizing: border-box;
+}
+
+.offer-image {
+    width: 50%;
+}
+
+.offer-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
 }
