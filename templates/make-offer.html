@@ -66,14 +66,12 @@
     <form action="" method="post">
         {% csrf_token %}
 
-
-        <input type="text" name="buyer_first_name" placeholder="Ім'я" value="{{ user.first_name }}">
-        <input type="text" name="buyer_last_name" placeholder="Прізвище" value="{{ user.second_name }}">
-        <input type="text" name="buyer_email" placeholder="Електронна пошта" value="{{ user.email }}">
-        <input type="text" name="buyer_city" placeholder="Місто" value="{{ user.city }}">
-        <input type="text" name="buyer_location" placeholder="Адреса" value="{{ user.location }}">
-
-
+        <input type="text" name="buyer_first_name" placeholder="Ім'я" value="{{ user.first_name }}" required>
+        <input type="text" name="buyer_last_name" placeholder="Прізвище" value="{{ user.second_name }}" required>
+        <input type="text" name="buyer_email" placeholder="Електронна пошта" value="{{ user.email }}" required>
+        <input type="text" name="buyer_city" placeholder="Місто" value="{% if user.first_name %}{{ user.city }}{% endif %}" required>
+        <input type="text" name="buyer_location" placeholder="Адреса" value="{% if user.first_name %}{{ user.location }}{% endif %}" required>
+    
         <button type="submit" value="Підтвердити">Підтвердити</button>
     </form>
 </div>
